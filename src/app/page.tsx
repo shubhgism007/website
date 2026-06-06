@@ -185,7 +185,7 @@ export default function Home() {
       <Section id="solutions" variant="muted">
         <SectionHeader
           title="Solutions Built Around Real Business Challenges"
-          subtitle="Discover relevant AI applications tailored for specific workflows without reading long text listings."
+          subtitle="Select a business area to see relevant accelerators and outcomes."
           label="Solution Explorer"
         />
         <FadeIn>
@@ -197,7 +197,7 @@ export default function Home() {
       <Section id="featured-accelerators">
         <SectionHeader
           title="Proven Functional Baselines"
-          subtitle="Explore working enterprise accelerators built for immediate sandbox demonstration."
+          subtitle="Working solutions with live demos, ready to customize and deploy."
           label="Featured Accelerators"
         />
 
@@ -308,7 +308,7 @@ export default function Home() {
       <Section id="how-it-works" variant="dots">
         <SectionHeader
           title="From Idea to Deployment"
-          subtitle="Our engagement model reduces execution time by starting from working code foundations."
+          subtitle="Four steps from discovery to production."
           label="Our Process"
         />
         <div className="flex flex-col md:flex-row items-start gap-6 md:gap-4">
@@ -331,7 +331,7 @@ export default function Home() {
       <Section id="comparison">
         <SectionHeader
           title="Engineered to Deploy Faster"
-          subtitle="Compare standard custom engineering loops against our accelerator integration loops."
+          subtitle="Every traditional AI project takes 6–12 months. Avyu starts from working code."
           label="Bespoke vs. Avyu"
         />
         <FadeIn>
@@ -343,7 +343,7 @@ export default function Home() {
       <Section id="deployment" variant="muted">
         <SectionHeader
           title="Built for Secure Environments"
-          subtitle="Deploy functional templates inside the networks, security controls, and boundaries you trust."
+          subtitle="Every deployment runs inside your network, under your controls."
           label="Infrastructure & Governance"
         />
         
