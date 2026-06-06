@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { ArrowRight, Bot, Cpu, Database, Link as LinkIcon, Lock, Network, ShieldCheck, Activity, Play, Eye } from "lucide-react";
 import { Section } from "@/components/ui/section";
@@ -17,25 +18,25 @@ const steps: ProcessStep[] = [
   {
     step: 1,
     title: "Discover",
-    description: "Map target workflows and business outcomes.",
+    description: "Map the workflow and target outcome.",
     icon: "FileSearch",
   },
   {
     step: 2,
     title: "Demonstrate",
-    description: "Experience a working sandbox prototype within days.",
+    description: "See a live sandbox within days.",
     icon: "Eye",
   },
   {
     step: 3,
     title: "Customize",
-    description: "Configure interfaces, database endpoints, and governance.",
+    description: "Wire in your data and governance rules.",
     icon: "Code",
   },
   {
     step: 4,
     title: "Deploy",
-    description: "Launch inside your secure private cloud or hosting target.",
+    description: "Go live inside your infrastructure.",
     icon: "Send",
   },
 ];
@@ -245,15 +246,19 @@ export default function Home() {
           subtitle="Our engagement model reduces execution time by starting from working code foundations."
           label="Our Process"
         />
-        <div className="relative">
-          {/* Connecting Line for Timeline */}
-          <div className="absolute top-8 left-1/2 -translate-x-1/2 w-0.5 h-[calc(100%-80px)] bg-border hidden md:block" />
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6 relative">
-            {steps.map((step) => (
-              <ProcessStepCard key={step.step} step={step} />
-            ))}
-          </div>
+        <div className="flex flex-col md:flex-row items-start gap-6 md:gap-4">
+          {steps.map((step, idx) => (
+            <Fragment key={step.step}>
+              <div className="flex-1">
+                <ProcessStepCard step={step} />
+              </div>
+              {idx < steps.length - 1 && (
+                <div className="hidden md:flex items-center justify-center pt-7 shrink-0">
+                  <ArrowRight className="h-4 w-4 text-muted-foreground/30" />
+                </div>
+              )}
+            </Fragment>
+          ))}
         </div>
       </Section>
 
