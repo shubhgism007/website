@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { ArrowRight, Bot, Cpu, Database, Link as LinkIcon, Lock, Network, ShieldCheck, Activity, Play, Eye } from "lucide-react";
+import { ArrowRight, Bot, Database, Link as LinkIcon, Lock, Network, ShieldCheck, Activity, Play, Eye } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SolutionExplorer } from "@/components/ui/solution-explorer";
@@ -44,27 +44,51 @@ const steps: ProcessStep[] = [
 const featuredAccelerators = [
   {
     name: "UPSC AI Preparation",
-    outcome: "Personalize study paths and grade essays automatically to boost readiness metrics.",
+    outcome: "Personalize study paths and auto-grade essays to boost exam readiness.",
     categorySlug: "learning-education",
     slug: "upsc-ai",
     visualClass: "from-blue-600/10 to-indigo-600/10 border-blue-500/20",
-    accentColor: "text-blue-500",
+    dotColor: "bg-blue-500",
+    bubbleClass: "bg-blue-500/20 text-blue-300",
+    mockQuery: "Generate a study plan for Polity",
+    mockResponse: "4-week plan: Week 1 — Constitution & Amendments...",
+    dataLabel: "Readiness: 74%",
   },
   {
     name: "Teaching Assistant",
-    outcome: "Automate syllabus questions and homework evaluations to save hours of manual prep.",
+    outcome: "Cut educator admin time by 60% with automated grading and instant query responses.",
     categorySlug: "learning-education",
     slug: "teaching-assistant",
     visualClass: "from-emerald-600/10 to-teal-600/10 border-emerald-500/20",
-    accentColor: "text-emerald-500",
+    dotColor: "bg-emerald-500",
+    bubbleClass: "bg-emerald-500/20 text-emerald-300",
+    mockQuery: "Grade this essay on climate policy",
+    mockResponse: "Score: 8.5/10. Strong thesis, 3 sources cited...",
+    dataLabel: "Queue: 12 essays",
   },
   {
     name: "HR Operations Copilot",
-    outcome: "Streamline employee onboarding checklists and search handbooks dynamically.",
+    outcome: "Reduce hiring time, improve onboarding, and automate employee support at scale.",
     categorySlug: "workforce-hr",
     slug: "hr-copilot",
     visualClass: "from-purple-600/10 to-pink-600/10 border-purple-500/20",
-    accentColor: "text-purple-500",
+    dotColor: "bg-purple-500",
+    bubbleClass: "bg-purple-500/20 text-purple-300",
+    mockQuery: "Leave policy for contractors?",
+    mockResponse: "Contractors receive 10 days/year, accrued monthly...",
+    dataLabel: "47 policies indexed",
+  },
+  {
+    name: "Training Simulation Platform",
+    outcome: "Risk-free scenario practice that cuts training infrastructure costs by 60%.",
+    categorySlug: "training-simulation",
+    slug: "training-simulation-platform",
+    visualClass: "from-amber-600/10 to-orange-600/10 border-amber-500/20",
+    dotColor: "bg-amber-500",
+    bubbleClass: "bg-amber-500/20 text-amber-300",
+    mockQuery: "Start emergency response scenario #4",
+    mockResponse: "Scenario active. 45F, cardiac event. Timer: 0:00",
+    dataLabel: "Scenario: Active",
   },
 ];
 
@@ -179,29 +203,60 @@ export default function Home() {
                   isEven ? "" : "lg:flex-row-reverse"
                 }`}
               >
-                {/* Visual Screenshot Placeholder */}
-                <div className={`w-full lg:w-1/2 rounded-xl border p-8 bg-gradient-to-br ${acc.visualClass} aspect-video flex flex-col justify-between shadow-md relative overflow-hidden group`}>
-                  <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground bg-secondary px-2.5 py-0.5 rounded border border-border">
-                      {acc.name} sandbox
+                {/* App Window Chrome Mockup */}
+                <div className={`w-full lg:w-1/2 rounded-xl border bg-gradient-to-br ${acc.visualClass} aspect-video flex flex-col shadow-lg relative overflow-hidden`}>
+                  {/* Traffic-light header */}
+                  <div className="flex items-center gap-1.5 px-4 py-3 bg-background/70 border-b border-border/40 backdrop-blur-sm shrink-0">
+                    <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
+                    <span className="flex-1 mx-3 h-4 rounded bg-border/50 flex items-center justify-center">
+                      <span className="text-[9px] text-muted-foreground font-mono">{acc.slug}.avyu.ai</span>
                     </span>
-                    <span className="inline-flex items-center gap-1 text-[10px] uppercase font-bold tracking-wider text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                      <Eye className="h-2.5 w-2.5" />
+                    <span className="inline-flex items-center gap-1 text-[9px] font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                       Demo Active
                     </span>
                   </div>
-                  
-                  {/* Styled Mock Sandbox Graphic */}
-                  <div className="py-6 flex flex-col items-center justify-center text-center">
-                    <Cpu className={`h-12 w-12 ${acc.accentColor} mb-2`} />
-                    <span className="text-xs font-bold text-foreground">av-host://{acc.slug}.vy</span>
-                    <span className="text-[10px] text-muted-foreground mt-1">Status: Ready to link schemas</span>
+
+                  {/* Body */}
+                  <div className="flex flex-1 overflow-hidden">
+                    {/* Sidebar */}
+                    <div className="w-14 border-r border-border/30 p-3 space-y-2.5 bg-background/30 shrink-0">
+                      <div className={`h-1.5 rounded-full ${acc.dotColor} opacity-70 w-full`} />
+                      <div className="h-1.5 rounded-full bg-muted-foreground/20 w-full" />
+                      <div className="h-1.5 rounded-full bg-muted-foreground/20 w-3/4" />
+                      <div className="h-1.5 rounded-full bg-muted-foreground/15 w-5/6" />
+                      <div className="h-1.5 rounded-full bg-muted-foreground/10 w-2/3" />
+                    </div>
+
+                    {/* Content area */}
+                    <div className="flex-1 p-3 md:p-4 space-y-3 overflow-hidden">
+                      {/* User message bubble */}
+                      <div className="flex justify-end">
+                        <div className={`text-[9px] md:text-[10px] px-2.5 py-1.5 rounded-lg rounded-br-none ${acc.bubbleClass} max-w-[75%] leading-relaxed`}>
+                          {acc.mockQuery}
+                        </div>
+                      </div>
+                      {/* AI response bubble */}
+                      <div className="flex">
+                        <div className="text-[9px] md:text-[10px] px-2.5 py-1.5 rounded-lg rounded-bl-none bg-background/60 border border-border/50 max-w-[80%] leading-relaxed text-muted-foreground">
+                          {acc.mockResponse}
+                        </div>
+                      </div>
+                      {/* Data row */}
+                      <div className="flex items-center gap-2 px-2.5 py-1.5 rounded bg-background/40 border border-border/30">
+                        <span className={`h-1.5 w-1.5 rounded-full ${acc.dotColor} shrink-0`} />
+                        <span className="h-1.5 flex-1 rounded-full bg-muted-foreground/15" />
+                        <span className="text-[9px] text-muted-foreground font-mono shrink-0">{acc.dataLabel}</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="flex justify-between items-center text-[10px] text-muted-foreground border-t border-border/40 pt-3">
-                    <span>LLM Independent Layer</span>
-                    <span>PII Audit Shield V2</span>
+                  {/* Status bar */}
+                  <div className="flex justify-between items-center px-4 py-1.5 bg-background/60 border-t border-border/30 shrink-0">
+                    <span className="text-[9px] text-muted-foreground">LLM Independent Layer</span>
+                    <span className="text-[9px] text-muted-foreground">PII Audit Shield V2</span>
                   </div>
                 </div>
 
@@ -217,19 +272,20 @@ export default function Home() {
                     {acc.outcome}
                   </p>
                   
-                  <div className="flex items-center gap-4 pt-2">
-                    <Link
-                      href={`/solutions/${acc.categorySlug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-brand transition-colors"
-                    >
-                      View Solution Area
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
+                  <div className="flex flex-col sm:flex-row items-start gap-3 pt-2">
                     <Link
                       href="/contact"
-                      className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-brand transition-colors"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-secondary border border-border px-4 py-2 text-xs font-semibold text-foreground hover:bg-secondary/80 transition-colors"
                     >
-                      Watch Walkthrough
+                      <Play className="h-3 w-3 fill-current text-brand" />
+                      Watch Demo
+                    </Link>
+                    <Link
+                      href={`/solutions/${acc.categorySlug}`}
+                      className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-brand px-4 py-2 text-xs font-semibold text-brand-foreground hover:bg-brand/90 transition-colors"
+                    >
+                      View Solution
+                      <ArrowRight className="h-3 w-3" />
                     </Link>
                   </div>
                 </div>
