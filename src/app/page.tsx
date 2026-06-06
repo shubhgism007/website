@@ -1,17 +1,15 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { ArrowRight, Bot, Cloud, ClipboardList, Database, Link as LinkIcon, Lock, Network, Server, ShieldCheck, Activity, Play, Eye } from "lucide-react";
+import { ArrowRight, Cloud, ClipboardList, Link as LinkIcon, Lock, Server, ShieldCheck, Play } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SolutionExplorer } from "@/components/ui/solution-explorer";
 import { ComparisonTable } from "@/components/ui/comparison-table";
-import { DeploymentCard } from "@/components/ui/deployment-card";
 import { ProcessStepCard } from "@/components/ui/process-step";
 import { CTABanner } from "@/components/ui/cta-banner";
 import { FadeIn } from "@/components/animations/fade-in";
 import { StaggerChildren, StaggerItem } from "@/components/animations/stagger-children";
 import { categories } from "@/content/categories";
-import { deploymentModels } from "@/content/deployment-models";
 import type { ProcessStep } from "@/types/content";
 
 const steps: ProcessStep[] = [
