@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { ArrowRight, Bot, Database, Link as LinkIcon, Lock, Network, ShieldCheck, Activity, Play, Eye } from "lucide-react";
+import { ArrowRight, Bot, Cloud, ClipboardList, Database, Link as LinkIcon, Lock, Network, Server, ShieldCheck, Activity, Play, Eye } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SolutionExplorer } from "@/components/ui/solution-explorer";
@@ -92,13 +92,22 @@ const featuredAccelerators = [
   },
 ];
 
-const coreTrustItems = [
-  { name: "Customer Infrastructure", description: "Deploy directly within your AWS, GCP, or Azure subscription." },
-  { name: "Private Cloud Hosting", description: "Isolated VPC resources with strict security group boundaries." },
-  { name: "On-Prem Deployment", description: "Supports air-gapped operations with no external requirements." },
-  { name: "Enterprise Integrations", description: "Native connections to ERP, SQL databases, and internal systems." },
-  { name: "Security Controls", description: "Enforces data encryption, PII scrubbing, and row-level controls." },
-  { name: "Governance & Audits", description: "Full audit logs of prompt contexts, parameters, and query outputs." },
+const trustIconMap = {
+  Cloud,
+  Lock,
+  Server,
+  Link: LinkIcon,
+  ShieldCheck,
+  ClipboardList,
+} as const;
+
+const coreTrustItems: { name: string; iconKey: keyof typeof trustIconMap }[] = [
+  { name: "Customer Infrastructure", iconKey: "Cloud" },
+  { name: "Private Cloud Hosting", iconKey: "Lock" },
+  { name: "On-Prem Deployment", iconKey: "Server" },
+  { name: "Enterprise Integrations", iconKey: "Link" },
+  { name: "Security Controls", iconKey: "ShieldCheck" },
+  { name: "Governance & Audits", iconKey: "ClipboardList" },
 ];
 
 export default function Home() {
@@ -338,18 +347,18 @@ export default function Home() {
           label="Infrastructure & Governance"
         />
         
-        <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-          {coreTrustItems.map((item) => (
-            <StaggerItem key={item.name} className="flex gap-4 p-6 bg-card border border-border rounded-xl">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-brand">
-                <ShieldCheck className="h-5 w-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-foreground">{item.name}</h3>
-                <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{item.description}</p>
-              </div>
-            </StaggerItem>
-          ))}
+        <StaggerChildren className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+          {coreTrustItems.map((item) => {
+            const Icon = trustIconMap[item.iconKey];
+            return (
+              <StaggerItem key={item.name} className="flex items-center gap-4 p-5 bg-card border border-border rounded-xl">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-brand">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-sm font-semibold text-foreground">{item.name}</h3>
+              </StaggerItem>
+            );
+          })}
         </StaggerChildren>
       </Section>
 
