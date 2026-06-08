@@ -107,32 +107,37 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Comparison — dark inverted section */}
-      <section className="py-24 md:py-36 bg-primary relative overflow-hidden">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      {/* Comparison */}
+      <section className="py-24 md:py-36 relative overflow-hidden border-y border-border">
+        {/* Ambient glows */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(222_47%_7%)] to-background pointer-events-none" />
+        <div className="absolute left-[5%] top-1/2 -translate-y-1/2 w-[460px] h-[460px] rounded-full bg-red-500/[0.06] blur-[100px] pointer-events-none" />
+        <div className="absolute right-[5%] top-1/2 -translate-y-1/2 w-[460px] h-[460px] rounded-full bg-brand/[0.12] blur-[100px] pointer-events-none" />
+
+        <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/30 mb-16 text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground/40 mb-16 text-center">
               Bespoke vs. Avyu
             </p>
             <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 md:gap-0 items-center">
 
               {/* Traditional */}
               <div className="text-center md:text-right space-y-3 md:pr-16">
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/40">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/50">
                   Custom Build
                 </p>
-                <div className="text-[5rem] md:text-[6.5rem] font-black text-primary-foreground/70 leading-none">
+                <div className="text-[5rem] md:text-[6.5rem] font-black text-foreground/25 leading-none tabular-nums">
                   6–12
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-primary-foreground/50">Months</div>
-                <p className="text-[11px] text-primary-foreground/20 pt-2 uppercase tracking-wider">
+                <div className="text-2xl md:text-3xl font-bold text-foreground/30">Months</div>
+                <p className="text-[11px] text-muted-foreground/30 pt-2 uppercase tracking-wider">
                   Discovery → Prototype → Dev → Deploy
                 </p>
               </div>
 
               {/* VS divider */}
               <div className="flex items-center justify-center">
-                <span className="text-xs font-black text-primary-foreground/20 uppercase tracking-[0.3em] px-5 py-2.5 border border-primary-foreground/10 rounded-full">
+                <span className="text-xs font-black text-muted-foreground/25 uppercase tracking-[0.3em] px-5 py-2.5 border border-border rounded-full">
                   vs
                 </span>
               </div>
@@ -142,11 +147,11 @@ export default function Home() {
                 <p className="text-xs font-semibold uppercase tracking-wider text-brand">
                   Avyu Accelerators
                 </p>
-                <div className="text-[5rem] md:text-[6.5rem] font-black text-primary-foreground leading-none">
+                <div className="text-[5rem] md:text-[6.5rem] font-black text-foreground leading-none">
                   Weeks
                 </div>
                 <div className="text-2xl md:text-3xl font-bold text-brand">Not months</div>
-                <p className="text-[11px] text-primary-foreground/20 pt-2 uppercase tracking-wider">
+                <p className="text-[11px] text-muted-foreground/40 pt-2 uppercase tracking-wider">
                   Working Accelerator → Customize → Deploy
                 </p>
               </div>
