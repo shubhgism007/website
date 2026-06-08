@@ -78,6 +78,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Live Demo */}
+      <Section id="live-demo">
+        <div className="max-w-5xl mx-auto">
+          <FadeIn>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-widest text-brand mb-2 block">Live Demo</span>
+                <h2 className="text-3xl font-black tracking-tight sm:text-4xl text-foreground">
+                  Teaching Assistant
+                </h2>
+              </div>
+              <Link
+                href="https://teachingassistant.vercel.app/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors shrink-0"
+              >
+                Open full screen
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            {/* Browser chrome wrapper */}
+            <div className="rounded-xl border border-border overflow-hidden shadow-2xl">
+              {/* Traffic-light bar */}
+              <div className="flex items-center gap-1.5 px-4 py-3 bg-card border-b border-border/60 shrink-0">
+                <span className="h-3 w-3 rounded-full bg-red-400/70" />
+                <span className="h-3 w-3 rounded-full bg-yellow-400/70" />
+                <span className="h-3 w-3 rounded-full bg-green-400/70" />
+                <div className="flex-1 mx-4 h-6 rounded-md bg-secondary border border-border/50 flex items-center justify-center">
+                  <span className="text-[11px] text-muted-foreground font-mono">teachingassistant.vercel.app</span>
+                </div>
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Live
+                </span>
+              </div>
+              {/* iframe */}
+              <iframe
+                src="https://teachingassistant.vercel.app/login"
+                title="Teaching Assistant — Live Demo"
+                className="w-full border-0 block"
+                style={{ height: "680px" }}
+                allow="clipboard-write"
+                loading="lazy"
+              />
+            </div>
+          </FadeIn>
+        </div>
+      </Section>
+
       {/* How Avyu Works — editorial numbered steps */}
       <Section id="how-it-works" className="py-24 md:py-36">
         <div className="max-w-3xl mx-auto">
