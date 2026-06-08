@@ -3,8 +3,9 @@
 import { useState, type FormEvent } from "react";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
-import { Mail, MessageSquare, Calendar, ShieldCheck, CheckCircle } from "lucide-react";
+import { Mail, MessageSquare, ShieldCheck, CheckCircle } from "lucide-react";
 import { FadeIn } from "@/components/animations/fade-in";
+import { CalendlyEmbed } from "@/components/ui/calendly-embed";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -192,27 +193,18 @@ export default function ContactPage() {
             </div>
           </FadeIn>
 
-          {/* Info Side / Calendly Placeholder */}
+          {/* Info Side / Calendly */}
           <FadeIn direction="right" className="space-y-8">
-            <div className="rounded-xl border border-border bg-card p-6 md:p-8 shadow-sm">
-              <h3 className="text-lg font-bold text-foreground mb-6 flex items-center gap-2">
-                <Calendar className="h-5 w-5 text-brand" />
-                Schedule directly via Calendly
-              </h3>
-              
-              {/* Calendly Placeholder Frame */}
-              <div className="rounded-lg border border-border bg-secondary/35 p-8 text-center flex flex-col items-center justify-center h-64 relative">
-                <div className="absolute top-4 right-4">
-                  <span className="inline-flex items-center gap-1 text-[10px] uppercase font-bold tracking-wider text-muted-foreground bg-secondary px-2.5 py-0.5 rounded-full border border-border">
-                    Calendly Placeholder
-                  </span>
-                </div>
-                <Calendar className="h-10 w-10 text-brand mb-4" />
-                <h4 className="text-sm font-bold text-foreground">Interactive Scheduling Sandbox</h4>
-                <p className="text-xs text-muted-foreground max-w-xs mt-2 leading-relaxed">
-                  During production setups, we swap this block with your active Calendly URL scheduler widgets.
+            <div className="rounded-xl border border-border bg-card overflow-hidden shadow-sm">
+              <div className="px-6 pt-6 pb-4">
+                <h3 className="text-lg font-bold text-foreground">
+                  Or pick a time directly
+                </h3>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Book a 30-minute Discovery Session on Calendly.
                 </p>
               </div>
+              <CalendlyEmbed url="https://calendly.com/avyu_ai" height={660} />
             </div>
 
             {/* Sidebar Contact Info */}
