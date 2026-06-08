@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en" class="dark h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avyu.ai | Deploy Enterprise AI Faster</title>
+  <meta name="description" content="Business-ready Enterprise AI Accelerators tailored to your workflows, customized for your organization, and deployed within your environment.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#3b82f6',
+              light: '#60a5fa',
+              dark: '#1d4ed8',
+            },
+            darkBg: '#09090b',
+            darkCard: '#121214',
+            darkBorder: '#1f1f23',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Background Grids & Dots */
+    .bg-grid {
+      background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .light .bg-grid {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    }
+    
+    .bg-dots {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .light .bg-dots {
+      background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    }
+
+    /* Page View Transitions */
+    .page-view {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .page-view.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-darkBg text-zinc-100 font-sans min-h-full flex flex-col transition-colors duration-300 light:bg-white light:text-zinc-900">
+
+  <!-- NAVIGATION BAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-darkBg/80 backdrop-blur-xl border-b border-darkBorder transition-all duration-300 id="navbar">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <!-- Logo -->
+        <a href="#/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <div class="h-8 w-8 rounded-lg bg-brand flex items-center justify-center">
+            <span class="text-white font-bold text-sm">A</span>
+          </div>
+          <span class="font-semibold text-lg tracking-tight text-white light:text-zinc-900">
+            Avyu<span class="text-zinc-500">.ai</span>
+          </span>
+        </a>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="#/solutions" class="nav-link px-3 py-2 text-sm font-medium rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900/50 transition-colors">Solutions</a>
+          <a href="#/library" class="nav-link px-3 py-2 text-sm font-medium rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900/50 transition-colors">Accelerator Library</a>
+          <a href="#/deployment" class="nav-link px-3 py-2 text-sm font-medium rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900/50 transition-colors">Deployment</a>
+          <a href="#/about" class="nav-link px-3 py-2 text-sm font-medium rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900/50 transition-colors">About</a>
+          <a href="#/contact" class="nav-link px-3 py-2 text-sm font-medium rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900/50 transition-colors">Contact</a>
+        </div>
+
+        <!-- Right Side CTAs -->
+        <div class="flex items-center gap-3">
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="h-9 w-9 rounded-md border border-darkBorder bg-zinc-900/50 flex items-center justify-center hover:bg-zinc-800 transition-colors" aria-label="Toggle Theme">
+            <i data-lucide="sun" class="h-4 w-4 text-zinc-300 hidden dark:block"></i>
+            <i data-lucide="moon" class="h-4 w-4 text-zinc-600 block dark:hidden"></i>
+          </button>
+
+          <a href="#/contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-brand text-white hover:bg-brand/90 transition-colors">
+            Schedule Discovery Session
+            <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+          </a>
+
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-btn" class="md:hidden h-9 w-9 rounded-md border border-darkBorder bg-zinc-900/50 flex items-center justify-center hover:bg-zinc-800 transition-colors" aria-label="Toggle Menu">
+            <i data-lucide="menu" class="h-4 w-4 text-zinc-300" id="menu-icon"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-darkBorder bg-darkBg/95 backdrop-blur-xl px-4 py-4 space-y-1">
+      <a href="#/solutions" class="block px-3 py-2.5 text-sm font-medium rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors">Solutions</a>
+      <a href="#/library" class="block px-3 py-2.5 text-sm font-medium rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors">Accelerator Library</a>
+      <a href="#/deployment" class="block px-3 py-2.5 text-sm font-medium rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors">Deployment</a>
+      <a href="#/about" class="block px-3 py-2.5 text-sm font-medium rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors">About</a>
+      <a href="#/contact" class="block px-3 py-2.5 text-sm font-medium rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors">Contact</a>
+      <div class="pt-3">
+        <a href="#/contact" class="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium rounded-lg bg-brand text-white hover:bg-brand/90 transition-colors">
+          Schedule Discovery Session
+          <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN VIEW ROUTER CONTAINER -->
+  <main class="flex-grow pt-16">
+
+    <!-- ================= HOMEPAGE VIEW ================= -->
+    <div id="view-home" class="page-view active">
+      <!-- Hero Section -->
+      <section class="relative py-20 md:py-32 overflow-hidden bg-grid">
+        <div class="absolute inset-0 bg-gradient-to-b from-darkBg/30 via-darkBg to-darkBg pointer-events-none"></div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3.5 py-1 text-xs font-semibold text-brand mb-6 ring-1 ring-inset ring-brand/20">
+            New: Enterprise AI Accelerators Ready
+          </span>
+          <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl max-w-4xl mx-auto leading-tight">
+            Deploy Enterprise <span class="text-brand">AI Faster</span>
+          </h1>
+          <p class="mx-auto mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-zinc-400">
+            Business-ready Enterprise AI Accelerators tailored to your workflows, customized for your organization, and deployed within your environment.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#/solutions" class="inline-flex items-center justify-center w-full sm:w-auto rounded-lg bg-brand px-6 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-brand/90 transition-colors gap-2">
+              Explore Solutions
+              <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </a>
+            <a href="#/contact" class="inline-flex items-center justify-center w-full sm:w-auto rounded-lg bg-zinc-900 border border-darkBorder px-6 py-3.5 text-sm font-semibold text-zinc-300 hover:bg-zinc-800 transition-colors">
+              Schedule Discovery Session
+            </a>
+          </div>
+
+          <!-- Conceptual visual workflow representation -->
+          <div class="mt-20 relative rounded-xl border border-darkBorder bg-zinc-900/50 p-6 md:p-8 max-w-4xl mx-auto backdrop-blur-sm">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="flex flex-col items-center p-4 bg-zinc-800/40 rounded-lg border border-darkBorder/40">
+                <div class="text-xs font-bold text-brand uppercase tracking-wider mb-2">Business Challenges</div>
+                <div class="text-sm text-zinc-300 text-center font-medium">Manual processes, document searches, operational bottlenecks</div>
+              </div>
+              <div class="flex flex-col items-center justify-center py-2 md:py-0">
+                <i data-lucide="chevrons-right" class="h-8 w-8 text-brand animate-pulse"></i>
+                <div class="text-[10px] text-zinc-500 uppercase font-bold tracking-widest mt-1">Accelerated by Avyu</div>
+              </div>
+              <div class="flex flex-col items-center p-4 bg-brand/5 rounded-lg border border-brand/20">
+                <div class="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-2">Tailored Deployment</div>
+                <div class="text-sm text-zinc-200 text-center font-medium">Custom host environment, connected databases, audit trails</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Business Challenges / Solution Areas -->
+      <section class="py-16 md:py-24 border-t border-darkBorder bg-zinc-900/30">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand mb-4 ring-1 ring-inset ring-brand/20">Categories</span>
+            <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Solutions Built Around Real Business Challenges</h2>
+            <p class="mt-4 text-base text-zinc-400">Enterprise operations require custom-fit foundations, not generic SaaS tools or DIY builders.</p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" id="category-grid-home">
+            <!-- Dynamic JavaScript categories rendered here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Library Accelerators -->
+      <section class="py-16 md:py-24 border-t border-darkBorder">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand mb-4 ring-1 ring-inset ring-brand/20">Accelerator Library</span>
+            <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Enterprise AI Accelerators</h2>
+            <p class="mt-4 text-base text-zinc-400">Proven pre-built baselines optimized for rapid customized integrations.</p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" id="featured-accelerators-grid">
+            <!-- Dynamic JavaScript accelerators rendered here -->
+          </div>
+
+          <div class="mt-12 text-center">
+            <a href="#/library" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:gap-2.5 transition-all">
+              View all accelerators in the library
+              <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it Works Process -->
+      <section class="py-16 md:py-24 border-t border-darkBorder bg-dots relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-darkBg via-transparent to-darkBg pointer-events-none"></div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand mb-4 ring-1 ring-inset ring-brand/20">Our Process</span>
+            <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">From Idea to Deployment</h2>
+            <p class="mt-4 text-base text-zinc-400">We bridge the gaps of traditional software engineering using our reusable foundations.</p>
+          </div>
+
+          <div class="relative">
+            <div class="absolute top-8 left-1/2 -translate-x-1/2 w-0.5 h-[calc(100%-80px)] bg-darkBorder hidden md:block"></div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+              <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-zinc-900 border-2 border-darkBorder text-brand relative mb-6">
+                  <i data-lucide="file-search" class="h-6 w-6"></i>
+                  <span class="absolute -top-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-white">1</span>
+                </div>
+                <h3 class="text-lg font-bold text-white">Discover</h3>
+                <p class="mt-2 text-sm text-zinc-400">Identify your primary business bottlenecks and target metrics.</p>
+              </div>
+              <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-zinc-900 border-2 border-darkBorder text-brand relative mb-6">
+                  <i data-lucide="eye" class="h-6 w-6"></i>
+                  <span class="absolute -top-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-white">2</span>
+                </div>
+                <h3 class="text-lg font-bold text-white">Demonstrate</h3>
+                <p class="mt-2 text-sm text-zinc-400">Test drive a live sandbox prototype mapping to your target workflow.</p>
+              </div>
+              <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-zinc-900 border-2 border-darkBorder text-brand relative mb-6">
+                  <i data-lucide="code" class="h-6 w-6"></i>
+                  <span class="absolute -top-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-white">3</span>
+                </div>
+                <h3 class="text-lg font-bold text-white">Customize</h3>
+                <p class="mt-2 text-sm text-zinc-400">Tailor parameters, integrations, pipelines, and compliance rules.</p>
+              </div>
+              <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-zinc-900 border-2 border-darkBorder text-brand relative mb-6">
+                  <i data-lucide="send" class="h-6 w-6"></i>
+                  <span class="absolute -top-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-white">4</span>
+                </div>
+                <h3 class="text-lg font-bold text-white">Deploy</h3>
+                <p class="mt-2 text-sm text-zinc-400">Host securely in your private cloud, on-premises, or customer accounts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Avyu Comparison -->
+      <section class="py-16 md:py-24 border-t border-darkBorder">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand mb-4 ring-1 ring-inset ring-brand/20">Bespoke vs. Avyu</span>
+            <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Designed for Enterprise Needs</h2>
+            <p class="mt-4 text-base text-zinc-400">Traditional software builds are slow and high risk. Avyu accelerators reduce timeline boundaries.</p>
+          </div>
+
+          <div class="overflow-x-auto rounded-xl border border-darkBorder bg-zinc-900/20 max-w-5xl mx-auto">
+            <table class="w-full text-left text-sm">
+              <thead>
+                <tr class="border-b border-darkBorder bg-zinc-900/50">
+                  <th class="px-6 py-4 font-semibold text-white w-1/4">Key Dimension</th>
+                  <th class="px-6 py-4 font-semibold text-zinc-500 w-3/8">Traditional custom AI build</th>
+                  <th class="px-6 py-4 font-semibold text-brand w-3/8">Avyu enterprise accelerator</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-darkBorder/60">
+                <tr>
+                  <td class="px-6 py-5 font-medium text-white">Time to Value</td>
+                  <td class="px-6 py-5 text-zinc-400">6–12 months of custom engineering blueprints.</td>
+                  <td class="px-6 py-5 text-white font-medium bg-brand/5">Demonstrated in days; deployed in weeks.</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-5 font-medium text-white">Development Risk</td>
+                  <td class="px-6 py-5 text-zinc-400">High project failure rate starting from empty directories.</td>
+                  <td class="px-6 py-5 text-white font-medium bg-brand/5">Low. Pre-validated modules are already running.</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-5 font-medium text-white">Implementation Cost</td>
+                  <td class="px-6 py-5 text-zinc-400">Expensive bespoke developer fees from scratch.</td>
+                  <td class="px-6 py-5 text-white font-medium bg-brand/5">Predictable costs due to shared baselines.</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-5 font-medium text-white">Security & Guardrails</td>
+                  <td class="px-6 py-5 text-zinc-400">Built late, adding friction to deployment targets.</td>
+                  <td class="px-6 py-5 text-white font-medium bg-brand/5">Governance layers and query filters pre-packaged.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deployment Models -->
+      <section class="py-16 md:py-24 border-t border-darkBorder bg-zinc-900/30">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand mb-4 ring-1 ring-inset ring-brand/20">Deployment</span>
+            <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Built for Enterprise Environments</h2>
+            <p class="mt-4 text-base text-zinc-400">Robust hosting configurations that align with your corporate security standards.</p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" id="deployment-grid-home">
+            <!-- Dynamic JavaScript deployment models rendered here -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ================= SOLUTIONS OVERVIEW VIEW ================= -->
+    <div id="view-solutions" class="page-view">
+      <section class="relative py-20 overflow-hidden bg-grid">
+        <div class="absolute inset-0 bg-gradient-to-b from-darkBg/30 via-darkBg to-darkBg pointer-events-none"></div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand mb-4 ring-1 ring-inset ring-brand/20">Our Solutions</span>
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Solutions Tailored to Real Challenges</h1>
+            <p class="mt-4 text-base text-zinc-400">Select a category below to explore pre-built accelerators built for your specific operational area.</p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" id="solutions-page-grid">
+            <!-- Dynamic category cards -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ================= ACCELERATOR LIBRARY VIEW ================= -->
+    <div id="view-library" class="page-view">
+      <section class="relative py-20 overflow-hidden bg-grid">
+        <div class="absolute inset-0 bg-gradient-to-b from-darkBg/30 via-darkBg to-darkBg pointer-events-none"></div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand mb-4 ring-1 ring-inset ring-brand/20">Accelerator Library</span>
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Enterprise AI Accelerator Library</h1>
+            <p class="mt-4 text-base text-zinc-400">Browse, search, and filter our operational foundations ready for custom deployment.</p>
+          </div>
+
+          <!-- Filters & Search Bar -->
+          <div class="mb-10 p-6 border border-darkBorder bg-zinc-900/50 rounded-xl space-y-6">
+            <div class="relative max-w-lg">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i data-lucide="search" class="h-5 w-5 text-zinc-500"></i>
+              </span>
+              <input type="text" id="library-search" class="block w-full pl-10 pr-4 py-2.5 rounded-lg border border-darkBorder bg-darkBg text-white placeholder-zinc-500 outline-none focus:border-brand transition-colors text-sm" placeholder="Search accelerators by name or capability...">
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-2 border-t border-darkBorder/60" id="library-category-filters">
+              <!-- Dynamic Category Buttons -->
+            </div>
+          </div>
+
+          <!-- Accelerators Grid -->
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" id="library-page-grid">
+            <!-- Dynamic Filtered list -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ================= DEPLOYMENT VIEW ================= -->
+    <div id="view-deployment" class="page-view">
+      <section class="relative py-20 overflow-hidden bg-grid">
+        <div class="absolute inset-0 bg-gradient-to-b from-darkBg/30 via-darkBg to-darkBg pointer-events-none"></div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand mb-4 ring-1 ring-inset ring-brand/20">Deployment</span>
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Built for Security & Compliance</h1>
+            <p class="mt-4 text-base text-zinc-400">Host enterprise models directly inside your designated compliance environments.</p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-20" id="deployment-page-grid">
+            <!-- Dynamic deployment cards -->
+          </div>
+
+          <!-- Architecture diagrams -->
+          <div class="max-w-4xl mx-auto border border-darkBorder bg-zinc-900/40 p-8 rounded-xl text-center">
+            <h3 class="text-lg font-semibold text-white mb-4">Enterprise Gateway Architecture</h3>
+            <p class="text-sm text-zinc-400 max-w-md mx-auto mb-8">Data flows are scrubbed of PII and audited before reaching the foundational model targets.</p>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+              <div class="p-4 bg-zinc-800 rounded-lg border border-darkBorder text-center">
+                <span class="text-xs text-zinc-500 font-bold block mb-1">Source</span>
+                <span class="text-sm text-white font-medium">User Query</span>
+              </div>
+              <div class="text-zinc-500 text-center font-bold hidden md:block">→</div>
+              <div class="p-4 bg-brand/10 rounded-lg border border-brand/20 text-center">
+                <span class="text-xs text-brand font-bold block mb-1">Avyu Gate</span>
+                <span class="text-sm text-white font-medium">Scrubbing & Audit</span>
+              </div>
+              <div class="text-zinc-500 text-center font-bold hidden md:block">→</div>
+              <div class="p-4 bg-zinc-800 rounded-lg border border-darkBorder text-center">
+                <span class="text-xs text-zinc-500 font-bold block mb-1">Target</span>
+                <span class="text-sm text-white font-medium">Secure LLM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ================= ABOUT VIEW ================= -->
+    <div id="view-about" class="page-view">
+      <section class="relative py-20 overflow-hidden bg-grid">
+        <div class="absolute inset-0 bg-gradient-to-b from-darkBg/30 via-darkBg to-darkBg pointer-events-none"></div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand mb-4 ring-1 ring-inset ring-brand/20">About Us</span>
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Bridging the AI Implementation Gap</h1>
+            <p class="mt-4 text-base text-zinc-400">Our mission is to help organizations launch production-ready AI solutions faster, safer, and at a predictable cost.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div class="p-6 border border-darkBorder bg-zinc-900/30 rounded-xl">
+              <h3 class="text-lg font-bold text-white">Why Avyu Exists</h3>
+              <p class="mt-3 text-sm text-zinc-400 leading-relaxed">Building custom enterprise solutions takes months. Rigid SaaS apps can't adapt to complex corporate guidelines. Avyu provides the customized middle ground.</p>
+            </div>
+            <div class="p-6 border border-darkBorder bg-zinc-900/30 rounded-xl">
+              <h3 class="text-lg font-bold text-white">Our Mission</h3>
+              <p class="mt-3 text-sm text-zinc-400 leading-relaxed">Accelerating functional, production-ready AI deployment by supplying pre-built modular baselines that can be fine-tuned to your business.</p>
+            </div>
+            <div class="p-6 border border-darkBorder bg-zinc-900/30 rounded-xl">
+              <h3 class="text-lg font-bold text-white">Our Values</h3>
+              <p class="mt-3 text-sm text-zinc-400 leading-relaxed">Absolute transparency, compliance, complete data sovereignty, and reliable integrations without locked platform silos.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ================= CONTACT VIEW ================= -->
+    <div id="view-contact" class="page-view">
+      <section class="relative py-20 overflow-hidden bg-grid">
+        <div class="absolute inset-0 bg-gradient-to-b from-darkBg/30 via-darkBg to-darkBg pointer-events-none"></div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand mb-4 ring-1 ring-inset ring-brand/20">Contact</span>
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Schedule a Discovery Session</h1>
+            <p class="mt-4 text-base text-zinc-400">Map out your target workflows, infrastructure specifications, and deployment timeline.</p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            <!-- Form Card -->
+            <div class="p-6 border border-darkBorder bg-zinc-900/50 rounded-xl shadow-sm">
+              <form id="contact-form" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Name</label>
+                    <input type="text" required class="block w-full rounded-lg border border-darkBorder bg-darkBg px-4 py-2.5 text-sm text-white outline-none focus:border-brand transition-colors" placeholder="John Doe">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Company</label>
+                    <input type="text" required class="block w-full rounded-lg border border-darkBorder bg-darkBg px-4 py-2.5 text-sm text-white outline-none focus:border-brand transition-colors" placeholder="Acme Corp">
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Role</label>
+                    <input type="text" required class="block w-full rounded-lg border border-darkBorder bg-darkBg px-4 py-2.5 text-sm text-white outline-none focus:border-brand transition-colors" placeholder="e.g. CTO / CIO">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Work Email</label>
+                    <input type="email" required class="block w-full rounded-lg border border-darkBorder bg-darkBg px-4 py-2.5 text-sm text-white outline-none focus:border-brand transition-colors" placeholder="john@company.com">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Challenge</label>
+                  <input type="text" required class="block w-full rounded-lg border border-darkBorder bg-darkBg px-4 py-2.5 text-sm text-white outline-none focus:border-brand transition-colors" placeholder="e.g. HR onboarding / Search automation">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Message</label>
+                  <textarea rows="4" class="block w-full rounded-lg border border-darkBorder bg-darkBg px-4 py-2.5 text-sm text-white outline-none focus:border-brand transition-colors resize-none" placeholder="Provide extra details on target databases and cloud targets..."></textarea>
+                </div>
+                <button type="submit" class="w-full rounded-lg bg-brand py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand/90 transition-colors">Request Discovery Session</button>
+              </form>
+              <div id="form-success" class="hidden text-center py-8">
+                <i data-lucide="check-circle" class="h-12 w-12 text-emerald-500 mx-auto mb-4"></i>
+                <h3 class="text-lg font-bold text-white">Request Received</h3>
+                <p class="text-xs text-zinc-400 mt-2">We will get back to you within 24 hours.</p>
+              </div>
+            </div>
+
+            <!-- Calendly Placeholder / Sidebar -->
+            <div class="space-y-6">
+              <div class="p-6 border border-darkBorder bg-zinc-900/30 rounded-xl text-center">
+                <div class="flex items-center gap-2 mb-4 text-white font-semibold justify-center">
+                  <i data-lucide="calendar" class="h-5 w-5 text-brand"></i>
+                  Calendly Direct Booking
+                </div>
+                <div class="h-48 rounded-lg bg-zinc-900 border border-darkBorder flex items-center justify-center text-xs text-zinc-500">
+                  Interactive Scheduler Sandbox
+                </div>
+              </div>
+              <div class="p-4 border border-darkBorder bg-zinc-900/20 rounded-xl flex gap-4">
+                <i data-lucide="mail" class="h-6 w-6 text-brand"></i>
+                <div>
+                  <h4 class="text-sm font-semibold text-white">General Inquiries</h4>
+                  <p class="text-xs text-zinc-400">contact@avyu.ai</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- CTA BANNER BOTTOM -->
+  <section class="py-16 border-t border-darkBorder bg-dots relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-darkBg via-transparent to-darkBg pointer-events-none"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="relative rounded-2xl border border-darkBorder bg-zinc-900/50 p-12 text-center max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-white md:text-3xl">Launch Enterprise AI Faster</h2>
+        <p class="mt-4 text-sm text-zinc-400 max-w-md mx-auto">Get functional blueprints customized for your exact workflows and infrastructure in days.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#/contact" class="rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white hover:bg-brand/90 transition-colors">Schedule Session</a>
+          <a href="#/library" class="rounded-lg bg-zinc-800 border border-darkBorder px-6 py-3 text-sm font-semibold text-zinc-300 hover:bg-zinc-700 transition-colors">Browse Library</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-darkBorder bg-zinc-950/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2">
+        <div class="h-8 w-8 rounded-lg bg-brand flex items-center justify-center">
+          <span class="text-white font-bold text-sm">A</span>
+        </div>
+        <span class="font-semibold text-white">Avyu<span class="text-zinc-500">.ai</span></span>
+      </div>
+      <p class="text-xs text-zinc-500">© 2026 Avyu.ai. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- DATA LAYER & ROUTER JS -->
+  <script>
+    // 1. Content Data
+    const categories = [
+      {
+        slug: "learning-education",
+        name: "Learning & Education",
+        description: "AI-powered learning platforms that personalize paths, automate feedback and evaluations.",
+        icon: "graduation-cap",
+        outcomes: ["Personalized paths at scale", "Automated grading & feedback"]
+      },
+      {
+        slug: "workforce-hr",
+        name: "Workforce & HR",
+        description: "Streamline recruitment, onboarding automation, and policy inquiries.",
+        icon: "users",
+        outcomes: ["50% faster onboarding", "Consistent policy mapping"]
+      },
+      {
+        slug: "training-simulation",
+        name: "Training & Simulation",
+        description: "Immersive high-stakes simulated scenarios for healthcare and operations teams.",
+        icon: "target",
+        outcomes: ["Risk-free test systems", "Adaptive scenario generation"]
+      },
+      {
+        slug: "customer-operations",
+        name: "Customer Operations",
+        description: "Intelligent billing query routing, upgrade offers, and proactive retention flows.",
+        icon: "headphones",
+        outcomes: ["70% response speed increase", "Predictive churn workflows"]
+      },
+      {
+        slug: "knowledge-management",
+        name: "Knowledge Management",
+        description: "Instantly index, audit, and semantic search unstructured documentation silos.",
+        icon: "book-open",
+        outcomes: ["Instant doc lookups", "Prevent structural data leaks"]
+      },
+      {
+        slug: "industry-solutions",
+        name: "Industry-Specific Solutions",
+        description: "Compliance-ready frameworks built for legal, medical, and public workflows.",
+        icon: "building-2",
+        outcomes: ["Regulatory check integration", "Legacy database APIs"]
+      }
+    ];
+
+    const accelerators = [
+      {
+        slug: "upsc-ai",
+        name: "UPSC AI",
+        category: "Learning & Education",
+        description: "Intelligent exam prep tool that crafts personalized learning calendars and provides grading logic.",
+        demoAvailable: true,
+        deploymentReady: true
+      },
+      {
+        slug: "teaching-assistant",
+        name: "Teaching Assistant",
+        category: "Learning & Education",
+        description: "AI tutor answering routine student queries and generating grades on assignments.",
+        demoAvailable: true,
+        deploymentReady: true
+      },
+      {
+        slug: "hr-copilot",
+        name: "HR Copilot",
+        category: "Workforce & HR",
+        description: "Automated onboarding support and employee policy routing workflows.",
+        demoAvailable: true,
+        deploymentReady: true
+      },
+      {
+        slug: "subscription-agent",
+        name: "Subscription Agent",
+        category: "Customer Operations",
+        description: "Predictive customer risk monitoring, churn analytics, and billing workflow routing.",
+        demoAvailable: true,
+        deploymentReady: false
+      },
+      {
+        slug: "training-simulation-platform",
+        name: "Training Simulation Platform",
+        category: "Training & Simulation",
+        description: "High-stakes scenario generator for medical training and emergency drills.",
+        demoAvailable: true,
+        deploymentReady: true
+      }
+    ];
+
+    const deploymentModels = [
+      { name: "Cloud Deployment", description: "Fully managed cloud hosting with automated uptime monitoring.", icon: "cloud" },
+      { name: "Private Cloud", description: "Dedicated hosted Virtual Private Cloud (VPC) with VPN security.", icon: "shield" },
+      { name: "Customer Host", description: "Deploy directly inside AWS, Azure, or GCP accounts.", icon: "server" }
+    ];
+
+    // 2. Render Functions
+    function renderHome() {
+      // Home categories
+      const catGrid = document.getElementById('category-grid-home');
+      catGrid.innerHTML = categories.map(cat => `
+        <div class="group p-6 border border-darkBorder bg-zinc-900/50 rounded-xl hover:border-brand/40 transition-all">
+          <div class="h-10 w-10 bg-zinc-800 rounded-lg flex items-center justify-center text-brand mb-4">
+            <i data-lucide="${cat.icon}" class="h-5 w-5"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">${cat.name}</h3>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed">${cat.description}</p>
+          <ul class="mt-4 space-y-1 text-[11px] text-zinc-500">
+            ${cat.outcomes.map(out => `<li class="flex items-center gap-1.5"><span class="h-1 w-1 bg-brand rounded-full"></span>${out}</li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+
+      // Featured Accelerators
+      const accGrid = document.getElementById('featured-accelerators-grid');
+      accGrid.innerHTML = accelerators.slice(0, 3).map(acc => `
+        <div class="p-6 border border-darkBorder bg-zinc-900/50 rounded-xl hover:border-brand/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex gap-2 mb-4">
+              <span class="text-[9px] uppercase font-bold text-zinc-400 bg-zinc-800 px-2 py-0.5 rounded border border-darkBorder">${acc.category}</span>
+              ${acc.demoAvailable ? `<span class="text-[9px] uppercase font-bold text-emerald-400 bg-emerald-950/20 px-2 py-0.5 rounded border border-emerald-900/20">Demo</span>` : ''}
+            </div>
+            <h3 class="text-lg font-bold text-white">${acc.name}</h3>
+            <p class="text-xs text-zinc-400 mt-2 leading-relaxed">${acc.description}</p>
+          </div>
+          <a href="#/library" class="mt-6 text-xs text-brand font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all">Explore details →</a>
+        </div>
+      `).join('');
+
+      // Deployment models
+      const depGrid = document.getElementById('deployment-grid-home');
+      depGrid.innerHTML = deploymentModels.map(model => `
+        <div class="p-6 border border-darkBorder bg-zinc-900/50 rounded-xl">
+          <div class="h-10 w-10 bg-zinc-800 rounded-lg flex items-center justify-center text-brand mb-4">
+            <i data-lucide="${model.icon}" class="h-5 w-5"></i>
+          </div>
+          <h3 class="text-md font-bold text-white">${model.name}</h3>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed">${model.description}</p>
+        </div>
+      `).join('');
+    }
+
+    function renderSolutions() {
+      const grid = document.getElementById('solutions-page-grid');
+      grid.innerHTML = categories.map(cat => `
+        <div class="p-6 border border-darkBorder bg-zinc-900/50 rounded-xl">
+          <div class="h-10 w-10 bg-zinc-800 rounded-lg flex items-center justify-center text-brand mb-4">
+            <i data-lucide="${cat.icon}" class="h-5 w-5"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">${cat.name}</h3>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed mb-4">${cat.description}</p>
+          <ul class="space-y-1.5 text-xs text-zinc-400 mb-6">
+            ${cat.outcomes.map(o => `<li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-emerald-500"></i>${o}</li>`).join('')}
+          </ul>
+          <a href="#/contact" class="inline-flex w-full justify-center items-center py-2 bg-zinc-850 hover:bg-zinc-800 border border-darkBorder text-xs rounded-lg text-white font-medium transition-colors">Request Solution Demo</a>
+        </div>
+      `).join('');
+    }
+
+    function renderLibrary(query = "", category = "all") {
+      const grid = document.getElementById('library-page-grid');
+      const filtered = accelerators.filter(acc => {
+        const matchesSearch = acc.name.toLowerCase().includes(query.toLowerCase()) || acc.description.toLowerCase().includes(query.toLowerCase());
+        const matchesCat = category === "all" || acc.category === category;
+        return matchesSearch && matchesCat;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-xs text-zinc-500">
+            No matching accelerators found. Try refining your filters.
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(acc => `
+        <div class="p-6 border border-darkBorder bg-zinc-900/50 rounded-xl flex flex-col justify-between">
+          <div>
+            <div class="flex gap-2 mb-4">
+              <span class="text-[9px] uppercase font-bold text-zinc-400 bg-zinc-800 px-2 py-0.5 rounded">${acc.category}</span>
+              ${acc.deploymentReady ? `<span class="text-[9px] uppercase font-bold text-brand bg-brand/10 px-2 py-0.5 rounded">Ready</span>` : ''}
+            </div>
+            <h3 class="text-lg font-bold text-white">${acc.name}</h3>
+            <p class="text-xs text-zinc-400 mt-2 leading-relaxed">${acc.description}</p>
+          </div>
+          <a href="#/contact" class="mt-6 text-xs text-brand font-semibold hover:opacity-80 inline-flex items-center gap-1">Request Sandbox Access →</a>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function renderDeployment() {
+      const grid = document.getElementById('deployment-page-grid');
+      grid.innerHTML = deploymentModels.map(model => `
+        <div class="p-6 border border-darkBorder bg-zinc-900/50 rounded-xl">
+          <div class="h-10 w-10 bg-zinc-800 rounded-lg flex items-center justify-center text-brand mb-4">
+            <i data-lucide="${model.icon}" class="h-5 w-5"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">${model.name}</h3>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed">${model.description}</p>
+        </div>
+      `).join('');
+    }
+
+    // 3. Client Side SPA Router
+    const views = {
+      '#/': 'view-home',
+      '#/solutions': 'view-solutions',
+      '#/library': 'view-library',
+      '#/deployment': 'view-deployment',
+      '#/about': 'view-about',
+      '#/contact': 'view-contact'
+    };
+
+    function router() {
+      const hash = window.location.hash || '#/';
+      const targetViewId = views[hash] || 'view-home';
+
+      // Update Nav Link styling
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === hash) {
+          link.classList.add('text-white', 'bg-zinc-900');
+          link.classList.remove('text-zinc-400');
+        } else {
+          link.classList.remove('text-white', 'bg-zinc-900');
+          link.classList.add('text-zinc-400');
+        }
+      });
+
+      // Show/Hide Page Views
+      document.querySelectorAll('.page-view').forEach(view => {
+        view.classList.remove('active');
+        if (view.id === targetViewId) {
+          view.classList.add('active');
+        }
+      });
+
+      // Load specific renders
+      if (targetViewId === 'view-home') {
+        renderHome();
+      } else if (targetViewId === 'view-solutions') {
+        renderSolutions();
+      } else if (targetViewId === 'view-library') {
+        renderLibrary();
+        setupLibraryFilters();
+      } else if (targetViewId === 'view-deployment') {
+        renderDeployment();
+      }
+
+      // Re-initialize Lucide Icons on layout swap
+      lucide.createIcons();
+      window.scrollTo(0, 0);
+    }
+
+    // Setup library filters
+    function setupLibraryFilters() {
+      const filters = document.getElementById('library-category-filters');
+      const uniqueCats = Array.from(new Set(accelerators.map(a => a.category)));
+      
+      let activeCat = "all";
+      const searchInput = document.getElementById('library-search');
+
+      function updateGrid() {
+        renderLibrary(searchInput.value, activeCat);
+      }
+
+      filters.innerHTML = `
+        <button class="filter-btn text-xs font-semibold px-3 py-1.5 rounded-lg border border-darkBorder transition-all bg-brand text-white" data-cat="all">All</button>
+        ${uniqueCats.map(c => `<button class="filter-btn text-xs font-semibold px-3 py-1.5 rounded-lg border border-darkBorder transition-all text-zinc-400" data-cat="${c}">${c}</button>`).join('')}
+      `;
+
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('bg-brand', 'text-white'));
+          btn.classList.add('bg-brand', 'text-white');
+          activeCat = btn.getAttribute('data-cat');
+          updateGrid();
+        });
+      });
+
+      searchInput.addEventListener('input', () => {
+        updateGrid();
+      });
+    }
+
+    // 4. Form Actions & Toggle Events
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('contact-form').classList.add('hidden');
+      document.getElementById('form-success').classList.remove('hidden');
+    });
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Dark/Light Mode Switch
+    const themeBtn = document.getElementById('theme-toggle');
+    themeBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      document.documentElement.classList.toggle('light');
+    });
+
+    // Listen to hash change routing
+    window.addEventListener('hashchange', router);
+    window.addEventListener('load', () => {
+      router();
+    });
+  </script>
+</body>
+</html>
