@@ -227,3 +227,53 @@ html {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* --- Legal prose (Privacy / Terms pages) --- */
+.prose-legal {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+.prose-legal p { margin-bottom: 1rem; }
+.prose-legal h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+.prose-legal h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.prose-legal ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+.prose-legal ul li {
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+.prose-legal ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: hsl(var(--brand));
+}
+.prose-legal a {
+  color: hsl(var(--brand));
+  text-decoration: none;
+}
+.prose-legal a:hover { opacity: 0.8; }
+.prose-legal strong { color: hsl(var(--foreground)); font-weight: 600; }
