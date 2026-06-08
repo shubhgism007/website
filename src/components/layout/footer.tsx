@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Logo } from "@/components/ui/logo";
 
 const footerLinks = {
   Solutions: [
@@ -28,14 +29,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 py-12 md:grid-cols-4">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 text-foreground">
-              <div className="h-8 w-8 rounded-lg bg-brand flex items-center justify-center">
-                <span className="text-brand-foreground font-bold text-sm">A</span>
-              </div>
-              <span className="font-semibold text-lg tracking-tight">
-                Avyu<span className="text-muted-foreground">.ai</span>
-              </span>
-            </Link>
+            <Logo iconSize={28} showTagline />
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-xs">
               Deploy Enterprise AI Faster. Business-ready accelerators tailored
               to your workflows.

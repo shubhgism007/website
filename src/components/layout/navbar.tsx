@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/ui/logo";
 
 const navLinks = [
   { href: "/solutions", label: "Solutions" },
@@ -40,17 +41,7 @@ export function Navbar() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-foreground hover:opacity-80 transition-opacity"
-          >
-            <div className="h-8 w-8 rounded-lg bg-brand flex items-center justify-center">
-              <span className="text-brand-foreground font-bold text-sm">A</span>
-            </div>
-            <span className="font-semibold text-lg tracking-tight">
-              Avyu<span className="text-muted-foreground">.ai</span>
-            </span>
-          </Link>
+          <Logo iconSize={30} />
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
