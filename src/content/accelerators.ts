@@ -1,26 +1,27 @@
 import type { Accelerator } from "@/types/content";
 
 export const accelerators: Accelerator[] = [
+  // ── LIVE DEMOS ─────────────────────────────────────────────────────────
   {
     slug: "upsc-ai",
-    name: "UPSC AI",
-    category: "Learning & Education",
+    name: "UPSC AI Prep",
+    category: "Education",
     industry: "Government & Public Sector",
     description:
-      "An intelligent exam preparation platform that delivers personalized study plans, adaptive practice tests, and real-time performance analytics for competitive examination preparation.",
+      "Intelligent exam preparation platform delivering personalised study plans, adaptive practice tests, and real-time performance analytics for competitive examination aspirants.",
     problemSolved:
-      "Competitive exam aspirants face fragmented study resources, lack of personalized guidance, and limited feedback on their preparation progress — leading to suboptimal outcomes and wasted effort.",
+      "Competitive exam aspirants face fragmented study resources, lack of personalised guidance, and limited feedback on their preparation progress — leading to suboptimal outcomes and wasted effort.",
     outcomes: [
-      "Personalized study plans based on individual strengths and gaps",
+      "40% improvement in preparation efficiency",
+      "Personalised study plans based on individual strengths and gaps",
       "Adaptive question generation aligned to exam patterns",
       "Real-time performance analytics and readiness scoring",
       "Automated essay evaluation with detailed feedback",
-      "40% improvement in preparation efficiency",
     ],
     capabilities: [
-      "AI-powered syllabus analysis and study planning",
+      "Syllabus analysis and study planning",
       "Adaptive practice test generation",
-      "Natural language essay evaluation",
+      "Essay evaluation and feedback",
       "Performance tracking and gap analysis",
       "Multi-format content delivery",
       "Progress benchmarking against cohort data",
@@ -37,22 +38,22 @@ export const accelerators: Accelerator[] = [
       "Custom evaluation rubrics",
       "Branding and white-labeling",
       "Integration with existing learning platforms",
-      "Language and localization support",
+      "Language and localisation support",
     ],
     demoAvailable: true,
     deploymentReady: true,
     demoUrl: "https://upsc-ai-pearl.vercel.app",
-    videoUrl: "{{video_url}}",
+    videoUrl: "",
     faq: [
       {
-        question: "How does the AI adapt to individual learners?",
+        question: "How does the platform adapt to individual learners?",
         answer:
-          "The system continuously analyzes performance data, identifying knowledge gaps and adjusting difficulty levels, topic focus, and study recommendations in real-time.",
+          "The system continuously analyses performance data, identifying knowledge gaps and adjusting difficulty levels, topic focus, and study recommendations in real-time.",
       },
       {
-        question: "Can this be customized for other competitive exams?",
+        question: "Can this be customised for other competitive exams?",
         answer:
-          "Yes. The accelerator is designed as a reusable foundation. Exam patterns, content, and evaluation criteria can be customized for any competitive examination format.",
+          "Yes. The accelerator is designed as a reusable foundation. Exam patterns, content, and evaluation criteria can be customised for any competitive examination format.",
       },
       {
         question: "What data privacy measures are in place?",
@@ -61,26 +62,28 @@ export const accelerators: Accelerator[] = [
       },
     ],
   },
+
+  // ── COMING SOON ────────────────────────────────────────────────────────
   {
     slug: "teaching-assistant",
     name: "Teaching Assistant",
-    category: "Learning & Education",
+    category: "Education",
     industry: "Education",
     description:
-      "An AI-powered teaching assistant that handles routine educational tasks — answering student queries, grading assignments, and providing personalized feedback — allowing educators to focus on high-impact teaching.",
+      "AI-powered teaching assistant that handles routine educational tasks — answering student queries, grading assignments, and providing personalised feedback — freeing educators to focus on high-impact teaching.",
     problemSolved:
-      "Educators spend 60% of their time on administrative and repetitive tasks like grading and answering common questions, leaving insufficient time for meaningful student interaction.",
+      "Educators spend 60% of their time on administrative and repetitive tasks, leaving insufficient time for meaningful student interaction.",
     outcomes: [
       "60% reduction in administrative workload for educators",
       "Instant, consistent responses to student queries",
       "Automated grading with detailed explanations",
-      "Personalized learning recommendations per student",
-      "Scalable across thousands of students",
+      "Personalised learning recommendations per student",
+      "Scalable across thousands of students simultaneously",
     ],
     capabilities: [
       "Natural language query handling",
       "Automated assignment grading",
-      "Personalized feedback generation",
+      "Personalised feedback generation",
       "Curriculum-aligned content recommendations",
       "Student progress tracking",
       "Multi-language support",
@@ -94,35 +97,24 @@ export const accelerators: Accelerator[] = [
     deploymentOptions: ["Cloud", "Private Cloud"],
     customizationScope: [
       "Curriculum and subject-specific training",
-      "Grading rubric customization",
+      "Grading rubric customisation",
       "Institution branding",
       "Integration with existing LMS",
       "Custom reporting dashboards",
     ],
     demoAvailable: true,
     deploymentReady: true,
-    demoUrl: "{{demo_url}}",
-    videoUrl: "{{video_url}}",
-    faq: [
-      {
-        question: "Does this replace human teachers?",
-        answer:
-          "No. The Teaching Assistant handles routine tasks so educators can focus on mentoring, critical thinking exercises, and personalized student support.",
-      },
-      {
-        question: "How accurate is the automated grading?",
-        answer:
-          "The system achieves high accuracy on objective assessments and provides nuanced feedback on subjective responses, with educator override capabilities for edge cases.",
-      },
-    ],
+    demoUrl: "https://teachingassistant.vercel.app",
+    videoUrl: "",
+    faq: [],
   },
   {
     slug: "hr-copilot",
     name: "HR Copilot",
-    category: "Workforce & HR",
+    category: "HR & Workforce",
     industry: "Cross-Industry",
     description:
-      "An intelligent HR operations platform that automates employee queries, policy navigation, onboarding workflows, and workforce analytics — delivering consistent, fast HR support at scale.",
+      "Intelligent HR operations platform that automates employee queries, policy navigation, onboarding workflows, and workforce analytics — delivering consistent, fast HR support at scale.",
     problemSolved:
       "HR teams are overwhelmed with repetitive queries, manual processes, and policy management tasks that prevent them from focusing on strategic workforce initiatives.",
     outcomes: [
@@ -135,7 +127,7 @@ export const accelerators: Accelerator[] = [
     capabilities: [
       "Natural language HR query resolution",
       "Automated onboarding workflows",
-      "Policy document navigation and summarization",
+      "Policy document navigation and summarisation",
       "Leave and benefits management",
       "Employee sentiment analysis",
       "Workforce analytics and reporting",
@@ -154,30 +146,239 @@ export const accelerators: Accelerator[] = [
       "Branding and employee portal design",
       "Regional compliance configurations",
     ],
-    demoAvailable: true,
-    deploymentReady: true,
-    demoUrl: "{{demo_url}}",
-    videoUrl: "{{video_url}}",
-    faq: [
-      {
-        question: "How does the system handle confidential HR information?",
-        answer:
-          "The HR Copilot implements role-based access controls, data encryption, and audit logging to ensure confidential employee information is handled securely and in compliance with data protection regulations.",
-      },
-      {
-        question: "Can it handle company-specific HR policies?",
-        answer:
-          "Yes. The system is trained on your organization's specific policies, handbooks, and procedures during the customization phase.",
-      },
+    demoAvailable: false,
+    deploymentReady: false,
+    demoUrl: "",
+    videoUrl: "",
+    faq: [],
+  },
+  {
+    slug: "contract-intelligence",
+    name: "Contract Intelligence",
+    category: "Legal",
+    industry: "Legal & Professional Services",
+    description:
+      "Automated contract review and risk analysis platform that extracts key clauses, flags deviations from standard templates, and accelerates legal due diligence across high-volume contract portfolios.",
+    problemSolved:
+      "Legal teams spend hundreds of hours manually reviewing contracts, leading to missed risks, inconsistent outcomes, and delayed deal closures.",
+    outcomes: [
+      "70% reduction in contract review time",
+      "Consistent risk identification across all documents",
+      "Automated clause extraction and comparison",
+      "Faster deal closures with reduced legal bottlenecks",
+      "Audit trail for every review decision",
     ],
+    capabilities: [
+      "Clause extraction and classification",
+      "Risk scoring and deviation flagging",
+      "Template comparison engine",
+      "Obligation tracking and deadline alerts",
+      "Multi-jurisdiction compliance checks",
+      "Redline suggestion generation",
+    ],
+    integrations: [
+      "Document management systems (SharePoint, iManage)",
+      "CRM and deal management platforms",
+      "E-signature platforms (DocuSign, Adobe Sign)",
+      "Legal practice management software",
+    ],
+    deploymentOptions: ["Cloud", "Private Cloud", "On-Premises"],
+    customizationScope: [
+      "Organisation-specific clause libraries",
+      "Custom risk scoring models",
+      "Jurisdiction-specific compliance rules",
+      "Integration with existing legal workflows",
+      "Branding and white-labeling",
+    ],
+    demoAvailable: false,
+    deploymentReady: false,
+    demoUrl: "",
+    videoUrl: "",
+    faq: [],
+  },
+  {
+    slug: "clinical-decision-support",
+    name: "Clinical Decision Support",
+    category: "Healthcare",
+    industry: "Healthcare & Life Sciences",
+    description:
+      "AI-powered clinical assistant that synthesises patient data, medical literature, and treatment protocols to support evidence-based clinical decisions at the point of care.",
+    problemSolved:
+      "Clinicians face information overload, time pressure, and the challenge of staying current with rapidly evolving medical literature — increasing the risk of suboptimal decisions.",
+    outcomes: [
+      "30% reduction in diagnostic turnaround time",
+      "Evidence-based recommendations at the point of care",
+      "Automated drug interaction and allergy checks",
+      "Reduced documentation burden for clinical staff",
+      "Improved adherence to clinical guidelines",
+    ],
+    capabilities: [
+      "Patient data synthesis and summarisation",
+      "Differential diagnosis generation",
+      "Drug interaction and contraindication checking",
+      "Clinical guideline alignment",
+      "Medical literature integration",
+      "SOAP note and documentation assistance",
+    ],
+    integrations: [
+      "Electronic Health Records (Epic, Cerner, Meditech)",
+      "Medical imaging platforms",
+      "Laboratory information systems",
+      "Pharmacy management systems",
+    ],
+    deploymentOptions: ["Private Cloud", "On-Premises"],
+    customizationScope: [
+      "Specialty-specific clinical protocols",
+      "Hospital formulary and drug database integration",
+      "Custom alert thresholds and escalation rules",
+      "EMR workflow integration",
+      "Regulatory compliance (HIPAA, HL7 FHIR)",
+    ],
+    demoAvailable: false,
+    deploymentReady: false,
+    demoUrl: "",
+    videoUrl: "",
+    faq: [],
+  },
+  {
+    slug: "fraud-detection-agent",
+    name: "Fraud Detection Agent",
+    category: "Finance",
+    industry: "Banking & Financial Services",
+    description:
+      "Real-time transaction monitoring and fraud detection platform that identifies anomalous patterns, scores risk, and triggers automated response workflows — reducing fraud losses without disrupting legitimate customers.",
+    problemSolved:
+      "Financial institutions face increasing fraud sophistication while struggling with high false-positive rates that frustrate customers and overwhelm investigation teams.",
+    outcomes: [
+      "45% reduction in fraud-related losses",
+      "85% fewer false positives vs rule-based systems",
+      "Sub-100ms real-time transaction scoring",
+      "Automated case creation and workflow routing",
+      "Adaptive model updates as fraud patterns evolve",
+    ],
+    capabilities: [
+      "Real-time transaction risk scoring",
+      "Anomaly detection and pattern analysis",
+      "Device and behavioural biometrics",
+      "Network graph analysis for fraud rings",
+      "Automated case management",
+      "Model drift monitoring and retraining",
+    ],
+    integrations: [
+      "Core banking platforms",
+      "Payment processors (Visa, Mastercard networks)",
+      "Case management systems",
+      "Regulatory reporting platforms",
+    ],
+    deploymentOptions: ["Cloud", "Private Cloud", "On-Premises"],
+    customizationScope: [
+      "Institution-specific fraud rules and thresholds",
+      "Custom risk appetite configuration",
+      "Integration with existing case management",
+      "Regulatory reporting customisation",
+      "Multi-currency and multi-region support",
+    ],
+    demoAvailable: false,
+    deploymentReady: false,
+    demoUrl: "",
+    videoUrl: "",
+    faq: [],
+  },
+  {
+    slug: "factory-quality-inspector",
+    name: "Factory Quality Inspector",
+    category: "Manufacturing",
+    industry: "Manufacturing & Industrial",
+    description:
+      "Computer vision-powered quality inspection platform that detects defects, measures tolerances, and provides real-time production line insights — replacing manual inspection at scale.",
+    problemSolved:
+      "Manual quality inspection is slow, inconsistent, and unable to keep pace with modern production line speeds — leading to defect escapes, rework costs, and customer returns.",
+    outcomes: [
+      "99.2% defect detection accuracy",
+      "60% reduction in inspection labour costs",
+      "Real-time defect alerts to production supervisors",
+      "Automated root cause analysis for recurring defects",
+      "Full traceability across the production line",
+    ],
+    capabilities: [
+      "Computer vision defect detection",
+      "Dimensional measurement and tolerance checking",
+      "Real-time production line monitoring",
+      "Defect classification and severity scoring",
+      "Root cause analysis and trend reporting",
+      "Integration with MES and SCADA systems",
+    ],
+    integrations: [
+      "Manufacturing Execution Systems (MES)",
+      "SCADA and PLC systems",
+      "ERP platforms (SAP, Oracle)",
+      "Industrial IoT sensor networks",
+    ],
+    deploymentOptions: ["On-Premises", "Hybrid"],
+    customizationScope: [
+      "Product-specific defect libraries",
+      "Custom tolerance and specification profiles",
+      "Line-specific camera and sensor integration",
+      "Custom alert and escalation workflows",
+      "Integration with existing quality management systems",
+    ],
+    demoAvailable: false,
+    deploymentReady: false,
+    demoUrl: "",
+    videoUrl: "",
+    faq: [],
+  },
+  {
+    slug: "network-ops-copilot",
+    name: "Network Ops Copilot",
+    category: "Telecom",
+    industry: "Telecommunications",
+    description:
+      "Intelligent network operations assistant that monitors infrastructure health, predicts outages before they occur, and guides NOC engineers through resolution workflows in natural language.",
+    problemSolved:
+      "Telecom NOC teams are overwhelmed by alert volume, rely on tribal knowledge for resolution, and struggle to proactively identify failures before customers are impacted.",
+    outcomes: [
+      "50% reduction in mean time to resolution (MTTR)",
+      "Proactive outage prediction up to 2 hours in advance",
+      "30% reduction in NOC analyst alert fatigue",
+      "Automated runbook generation and execution",
+      "Single interface for multi-vendor infrastructure",
+    ],
+    capabilities: [
+      "Real-time network health monitoring",
+      "Predictive fault detection and alerting",
+      "Natural language incident query and resolution",
+      "Automated runbook creation and execution",
+      "Multi-vendor infrastructure correlation",
+      "SLA monitoring and breach prediction",
+    ],
+    integrations: [
+      "Network management platforms (Cisco, Nokia, Ericsson)",
+      "IT service management (ServiceNow, Jira)",
+      "Observability platforms (Datadog, Dynatrace)",
+      "Ticketing and escalation systems",
+    ],
+    deploymentOptions: ["Cloud", "Private Cloud", "On-Premises"],
+    customizationScope: [
+      "Network topology and vendor-specific integration",
+      "Custom SLA and KPI thresholds",
+      "Runbook and resolution workflow customisation",
+      "Integration with existing ITSM toolchain",
+      "Regional regulatory compliance",
+    ],
+    demoAvailable: false,
+    deploymentReady: false,
+    demoUrl: "",
+    videoUrl: "",
+    faq: [],
   },
   {
     slug: "subscription-agent",
     name: "Subscription Agent",
-    category: "Customer Operations",
+    category: "Finance",
     industry: "SaaS & Technology",
     description:
-      "An AI-driven subscription management and customer retention platform that handles billing queries, upgrade recommendations, churn prediction, and proactive engagement.",
+      "AI-driven subscription management and customer retention platform that handles billing queries, upgrade recommendations, churn prediction, and proactive engagement — reducing revenue leakage at scale.",
     problemSolved:
       "Subscription businesses lose customers due to slow support, lack of proactive engagement, and inability to identify at-risk accounts before it's too late.",
     outcomes: [
@@ -185,7 +386,7 @@ export const accelerators: Accelerator[] = [
       "70% faster resolution of billing queries",
       "Automated upgrade and cross-sell recommendations",
       "Proactive risk identification and engagement",
-      "Reduced customer support costs",
+      "Reduced customer support operational costs",
     ],
     capabilities: [
       "Billing and subscription query resolution",
@@ -203,39 +404,33 @@ export const accelerators: Accelerator[] = [
     ],
     deploymentOptions: ["Cloud", "Private Cloud"],
     customizationScope: [
-      "Product catalog and pricing integration",
+      "Product catalogue and pricing integration",
       "Custom engagement workflows",
       "Brand voice and communication style",
       "Churn prediction model tuning",
-      "Dashboard and reporting customization",
+      "Dashboard and reporting customisation",
     ],
-    demoAvailable: true,
+    demoAvailable: false,
     deploymentReady: false,
-    demoUrl: "{{demo_url}}",
-    videoUrl: "{{video_url}}",
-    faq: [
-      {
-        question: "How does the churn prediction model work?",
-        answer:
-          "The model analyzes usage patterns, support interactions, billing history, and engagement metrics to identify accounts at risk of churn, enabling proactive outreach before cancellation.",
-      },
-    ],
+    demoUrl: "",
+    videoUrl: "",
+    faq: [],
   },
   {
     slug: "training-simulation-platform",
-    name: "Training Simulation Platform",
-    category: "Training & Simulation",
+    name: "Training Simulation",
+    category: "Healthcare",
     industry: "Healthcare & Safety",
     description:
-      "An immersive AI-powered simulation platform for high-stakes training scenarios — from medical procedures to emergency response — providing realistic, risk-free practice environments.",
+      "Immersive simulation platform for high-stakes training — from clinical procedures to emergency response — providing realistic, risk-free practice environments with measurable competency outcomes.",
     problemSolved:
       "High-stakes industries need realistic training environments but face prohibitive costs, safety risks, and limited scenario diversity with traditional training methods.",
     outcomes: [
       "Risk-free practice for high-stakes scenarios",
-      "Unlimited scenario generation and variation",
-      "Measurable competency improvement tracking",
       "60% reduction in training infrastructure costs",
-      "Scalable across organizations and locations",
+      "Measurable competency improvement tracking",
+      "Unlimited scenario generation and variation",
+      "Scalable across organisations and locations",
     ],
     capabilities: [
       "Dynamic scenario generation",
@@ -256,24 +451,13 @@ export const accelerators: Accelerator[] = [
       "Industry-specific scenario libraries",
       "Custom assessment criteria",
       "Regulatory compliance frameworks",
-      "Integration with existing training programs",
-      "Multi-language and localization",
+      "Integration with existing training programmes",
+      "Multi-language and localisation",
     ],
-    demoAvailable: true,
-    deploymentReady: true,
-    demoUrl: "{{demo_url}}",
-    videoUrl: "{{video_url}}",
-    faq: [
-      {
-        question: "What industries can this platform serve?",
-        answer:
-          "While initially designed for healthcare and emergency response, the platform's architecture supports customization for any industry requiring high-stakes training — including aviation, manufacturing, and defense.",
-      },
-      {
-        question: "Can scenarios be created without technical expertise?",
-        answer:
-          "Yes. The platform includes a scenario builder that allows domain experts to create and modify training scenarios without programming knowledge.",
-      },
-    ],
+    demoAvailable: false,
+    deploymentReady: false,
+    demoUrl: "",
+    videoUrl: "",
+    faq: [],
   },
 ];
